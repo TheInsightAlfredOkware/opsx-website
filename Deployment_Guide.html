@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Website Deployment Guide — Ops X Consulting</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; color: #1e293b; background: #f8fafc; font-size: 14px; line-height: 1.7; }
+    .cover { background: linear-gradient(135deg, #0e1117 0%, #121826 100%); color: white; padding: 80px 60px; min-height: 260px; }
+    .cover h1 { font-size: 36px; font-weight: 800; margin-bottom: 10px; }
+    .cover .sub { font-size: 18px; color: #14B8A6; font-weight: 600; margin-bottom: 20px; }
+    .cover p { color: #94a3b8; font-size: 14px; }
+    .toc { background: white; border-left: 4px solid #14B8A6; margin: 30px 60px; padding: 24px 30px; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
+    .toc h2 { color: #0e1117; font-size: 16px; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 1px; }
+    .toc ol { padding-left: 20px; }
+    .toc li { margin-bottom: 6px; color: #334155; }
+    .toc a { color: #14B8A6; text-decoration: none; }
+    .section { margin: 0 60px 40px; background: white; border-radius: 10px; padding: 32px 36px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); page-break-inside: avoid; }
+    .section-num { display: inline-block; background: #14B8A6; color: white; font-weight: 800; font-size: 12px; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; letter-spacing: 1px; text-transform: uppercase; }
+    h2.title { font-size: 22px; font-weight: 700; color: #0e1117; margin-bottom: 6px; }
+    .subtitle { color: #64748b; font-size: 13px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #e2e8f0; }
+    h3 { font-size: 15px; font-weight: 700; color: #0f172a; margin: 20px 0 8px; }
+    p { margin-bottom: 10px; color: #334155; }
+    ol, ul { padding-left: 22px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; color: #334155; }
+    .step { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 18px; margin-bottom: 12px; }
+    .step-num { font-weight: 800; color: #14B8A6; margin-right: 6px; }
+    code { background: #1e293b; color: #14B8A6; padding: 2px 8px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 13px; }
+    .code-block { background: #1e293b; color: #e2e8f0; padding: 16px 20px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 13px; margin: 12px 0; line-height: 1.8; overflow-x: auto; }
+    .code-block .comment { color: #64748b; }
+    .code-block .teal { color: #14B8A6; }
+    .alert { border-left: 4px solid #14B8A6; background: #f0fdf9; padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0; }
+    .alert.warn { border-color: #f59e0b; background: #fffbeb; }
+    .alert.danger { border-color: #ef4444; background: #fef2f2; }
+    .alert strong { display: block; margin-bottom: 4px; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th { background: #0e1117; color: white; padding: 10px 14px; text-align: left; font-size: 13px; }
+    td { padding: 9px 14px; border-bottom: 1px solid #e2e8f0; font-size: 13px; }
+    tr:nth-child(even) td { background: #f8fafc; }
+    .badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+    .badge.green { background: #dcfce7; color: #166534; }
+    .badge.blue { background: #dbeafe; color: #1e40af; }
+    .badge.gray { background: #f1f5f9; color: #475569; }
+    .footer { background: #0e1117; color: #64748b; text-align: center; padding: 30px; font-size: 12px; margin-top: 40px; }
+    .footer span { color: #14B8A6; }
+    @media print {
+      body { background: white; }
+      .section { box-shadow: none; border: 1px solid #e2e8f0; }
+      .toc { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="sub">Complete Step-by-Step Guide</div>
+  <h1>Website Deployment Guide</h1>
+  <p>From building a React/Vite website locally → deploying to Netlify → connecting a custom domain from Namecheap → enabling HTTPS</p>
+  <p style="margin-top:16px;">Prepared for: <strong style="color:white;">Ops X Consulting</strong> &nbsp;|&nbsp; Date: March 2026</p>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+  <h2>Table of Contents</h2>
+  <ol>
+    <li><a href="#s1">Prerequisites — What you need before starting</a></li>
+    <li><a href="#s2">Phase 1 — Build the website locally (React + Vite)</a></li>
+    <li><a href="#s3">Phase 2 — Set up Formspree (free contact form)</a></li>
+    <li><a href="#s4">Phase 3 — Build for production</a></li>
+    <li><a href="#s5">Phase 4 — Deploy to Netlify (free hosting)</a></li>
+    <li><a href="#s6">Phase 5 — Buy a domain on Namecheap</a></li>
+    <li><a href="#s7">Phase 6 — Connect the domain to Netlify</a></li>
+    <li><a href="#s8">Phase 7 — Point Namecheap nameservers to Netlify</a></li>
+    <li><a href="#s9">Phase 8 — Provision the SSL certificate (HTTPS)</a></li>
+    <li><a href="#s10">Phase 9 — Add a subdomain for a second app (e.g. app.opsxafrica.com)</a></li>
+    <li><a href="#s11">How to redeploy after making changes</a></li>
+    <li><a href="#s12">Troubleshooting common issues</a></li>
+    <li><a href="#s13">Cost summary</a></li>
+  </ol>
+</div>
+
+<!-- SECTION 1 -->
+<div class="section" id="s1">
+  <div class="section-num">Section 1</div>
+  <h2 class="title">Prerequisites — What you need before starting</h2>
+  <div class="subtitle">Everything to have in place before you begin</div>
+
+  <h3>Software to install on your computer</h3>
+  <div class="step"><span class="step-num">1.</span> <strong>Node.js</strong> — Download from <code>nodejs.org</code> (LTS version). This includes npm which you'll need to install packages and run builds.</div>
+  <div class="step"><span class="step-num">2.</span> <strong>VS Code</strong> — Download from <code>code.visualstudio.com</code>. This is the code editor used to build and manage the project.</div>
+  <div class="step"><span class="step-num">3.</span> <strong>Git</strong> (optional but recommended) — Download from <code>git-scm.com</code>. Useful for version control.</div>
+
+  <h3>Accounts to create (all free)</h3>
+  <table>
+    <tr><th>Service</th><th>Purpose</th><th>URL</th></tr>
+    <tr><td>Netlify</td><td>Free website hosting</td><td>netlify.com</td></tr>
+    <tr><td>Formspree</td><td>Free contact form backend</td><td>formspree.io</td></tr>
+    <tr><td>Namecheap</td><td>Domain name registrar</td><td>namecheap.com</td></tr>
+  </table>
+
+  <div class="alert">
+    <strong>Note on ports:</strong> If you have multiple projects running locally, assign each a fixed port in its <code>vite.config.ts</code> to prevent them from conflicting. For example: set port 5173 for your main app and port 5200 for your marketing site.
+  </div>
+</div>
+
+<!-- SECTION 2 -->
+<div class="section" id="s2">
+  <div class="section-num">Section 2</div>
+  <h2 class="title">Phase 1 — Build the website locally</h2>
+  <div class="subtitle">Setting up a React + Vite + TypeScript + Tailwind CSS project</div>
+
+  <h3>Step 1: Create the project folder</h3>
+  <p>Open a new terminal in VS Code and run:</p>
+  <div class="code-block">
+    <span class="comment"># Navigate to where you want the project</span><br>
+    cd C:\Users\yourname<br><br>
+    <span class="comment"># Create project folder manually (Vite interactive prompts can be unreliable)</span><br>
+    mkdir my-website<br>
+    cd my-website
+  </div>
+
+  <h3>Step 2: Create package.json</h3>
+  <p>Create a file called <code>package.json</code> in the project root with your dependencies listed. Key dependencies for a React + Vite + Tailwind site:</p>
+  <div class="code-block">
+    <span class="teal">"dependencies"</span>: {<br>
+    &nbsp;&nbsp;"react": "^18.3.1",<br>
+    &nbsp;&nbsp;"react-dom": "^18.3.1",<br>
+    &nbsp;&nbsp;"react-router-dom": "^6.22.0",<br>
+    &nbsp;&nbsp;"framer-motion": "^11.0.0",<br>
+    &nbsp;&nbsp;"lucide-react": "^0.344.0",<br>
+    &nbsp;&nbsp;"react-helmet-async": "^2.0.5",<br>
+    &nbsp;&nbsp;"@formspree/react": "^2.5.1"<br>
+    },<br>
+    <span class="teal">"devDependencies"</span>: {<br>
+    &nbsp;&nbsp;"vite": "^5.4.0",<br>
+    &nbsp;&nbsp;"@vitejs/plugin-react": "^4.3.1",<br>
+    &nbsp;&nbsp;"typescript": "^5.4.0",<br>
+    &nbsp;&nbsp;"tailwindcss": "^3.4.0",<br>
+    &nbsp;&nbsp;"postcss": "^8.4.0",<br>
+    &nbsp;&nbsp;"autoprefixer": "^10.4.0"<br>
+    }
+  </div>
+
+  <h3>Step 3: Install dependencies</h3>
+  <div class="code-block">npm install</div>
+  <p>This creates a <code>node_modules/</code> folder and <code>package-lock.json</code>. You should see "added X packages" with 0 critical vulnerabilities.</p>
+
+  <h3>Step 4: Configure Vite with a fixed port</h3>
+  <p>In <code>vite.config.ts</code>, always set a fixed port to prevent conflicts with other running projects:</p>
+  <div class="code-block">
+    server: {<br>
+    &nbsp;&nbsp;port: 5200,<br>
+    &nbsp;&nbsp;strictPort: true, <span class="comment">// fails instead of silently stealing another port</span><br>
+    },
+  </div>
+
+  <h3>Step 5: Run the development server</h3>
+  <div class="code-block">npm run dev</div>
+  <p>Open your browser at the URL shown (e.g. <code>http://localhost:5200/</code>). This is your live preview while building.</p>
+
+  <div class="alert warn">
+    <strong>Important:</strong> Always open a NEW terminal window when starting a second project's dev server. Never run two projects from the same terminal. Use <code>strictPort: true</code> so if the port is taken, it stops rather than stealing another project's port.
+  </div>
+
+  <h3>Step 6: Check for TypeScript errors</h3>
+  <p>Before building for production, always run a type check:</p>
+  <div class="code-block">npx tsc --noEmit</div>
+  <p>This must return with no output (no errors). Common issue: single-quoted strings containing apostrophes (e.g. <code>'what's working'</code>) will break. Fix by using double quotes (<code>"what's working"</code>) or backtick template literals.</p>
+</div>
+
+<!-- SECTION 3 -->
+<div class="section" id="s3">
+  <div class="section-num">Section 3</div>
+  <h2 class="title">Phase 2 — Set up Formspree (contact form)</h2>
+  <div class="subtitle">Free contact form backend — no server required</div>
+
+  <div class="step"><span class="step-num">1.</span> Go to <strong>formspree.io</strong> → sign up for a free account</div>
+  <div class="step"><span class="step-num">2.</span> Click <strong>"+ New Form"</strong> → give it a name (e.g. "Ops X Contact Form") → Create</div>
+  <div class="step"><span class="step-num">3.</span> Copy the <strong>Form ID</strong> shown — it looks like <code>xabcdefg</code></div>
+  <div class="step"><span class="step-num">4.</span> Create a file called <code>.env.local</code> in your project root (never commit this file):</div>
+  <div class="code-block">VITE_FORMSPREE_ID=xabcdefg</div>
+  <div class="step"><span class="step-num">5.</span> In your contact form component, use: <code>useForm("xabcdefg")</code> from <code>@formspree/react</code></div>
+
+  <div class="alert">
+    <strong>Free tier limits:</strong> Formspree free allows 50 submissions/month. This is plenty for a new business. Upgrade when needed.
+  </div>
+
+  <div class="alert warn">
+    <strong>Security note:</strong> Never put your Formspree ID or any secret keys directly in your code files. Always use environment variables (<code>import.meta.env.VITE_*</code>) and add <code>.env.local</code> to your <code>.gitignore</code>.
+  </div>
+</div>
+
+<!-- SECTION 4 -->
+<div class="section" id="s4">
+  <div class="section-num">Section 4</div>
+  <h2 class="title">Phase 3 — Build for production</h2>
+  <div class="subtitle">Creating the optimised files that get deployed</div>
+
+  <h3>Standard build</h3>
+  <div class="code-block">
+    cd C:\Users\yourname\my-website<br>
+    npm run build
+  </div>
+
+  <p>This runs <code>tsc && vite build</code> and creates a <code>dist/</code> folder. The output looks like:</p>
+  <div class="code-block">
+    dist/index.html &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.56 kB<br>
+    dist/assets/vendor-xxx.js &nbsp;&nbsp;163 kB<br>
+    dist/assets/motion-xxx.js &nbsp;&nbsp;115 kB<br>
+    dist/assets/index-xxx.css &nbsp;&nbsp;&nbsp;30 kB<br>
+    ✓ built in 3s
+  </div>
+
+  <div class="alert">
+    <strong>The <code>dist/</code> folder is what you deploy.</strong> Every time you make changes and want to update your live site, run <code>npm run build</code> again and redeploy the new <code>dist/</code> folder.
+  </div>
+
+  <h3>Build verification checklist before deploying</h3>
+  <ul>
+    <li>✓ <code>npx tsc --noEmit</code> returns zero errors</li>
+    <li>✓ <code>npm run build</code> exits with code 0 (no errors)</li>
+    <li>✓ <code>dist/</code> folder exists and contains <code>index.html</code></li>
+    <li>✓ Test locally with <code>npm run preview</code> to confirm the build works</li>
+  </ul>
+</div>
+
+<!-- SECTION 5 -->
+<div class="section" id="s5">
+  <div class="section-num">Section 5</div>
+  <h2 class="title">Phase 4 — Deploy to Netlify</h2>
+  <div class="subtitle">Getting your site live on the internet for free</div>
+
+  <h3>Method A: Drag and Drop (simplest)</h3>
+  <div class="step"><span class="step-num">1.</span> Go to <strong>app.netlify.com</strong> → sign up / log in (use GitHub for easier future integration)</div>
+  <div class="step"><span class="step-num">2.</span> From the dashboard, click <strong>"Add new site"</strong> → <strong>"Deploy manually"</strong></div>
+  <div class="step"><span class="step-num">3.</span> Open File Explorer and navigate to your project folder</div>
+  <div class="step"><span class="step-num">4.</span> Drag the entire <code>dist/</code> folder and drop it onto the Netlify upload zone</div>
+  <div class="step"><span class="step-num">5.</span> Netlify will deploy instantly and give you a URL like <code>https://random-name.netlify.app</code></div>
+  <div class="step"><span class="step-num">6.</span> To change the site name: <strong>Site configuration → Change site name</strong> → type your preferred slug (e.g. <code>opsxconsulting</code>) → your URL becomes <code>https://opsxconsulting.netlify.app</code></div>
+
+  <h3>Add environment variables to Netlify</h3>
+  <p>Your site needs the Formspree ID to work in production. Add it in Netlify:</p>
+  <div class="step"><span class="step-num">1.</span> Go to your site in Netlify → <strong>Site configuration → Environment variables</strong></div>
+  <div class="step"><span class="step-num">2.</span> Click <strong>"Add a variable"</strong></div>
+  <div class="step"><span class="step-num">3.</span> Key: <code>VITE_FORMSPREE_ID</code> &nbsp; Value: your Formspree form ID</div>
+  <div class="step"><span class="step-num">4.</span> Save → then rebuild locally (<code>npm run build</code>) and redeploy the new <code>dist/</code></div>
+
+  <div class="alert warn">
+    <strong>Why rebuild after adding env vars?</strong> Vite bakes environment variables into the JavaScript bundle at build time. If you add the variable in Netlify but don't rebuild, the old bundle still has no value for it.
+  </div>
+
+  <h3>Redeploying after changes</h3>
+  <div class="code-block">npm run build</div>
+  <p>Then drag the new <code>dist/</code> folder to Netlify → <strong>Deploys</strong> tab → drop zone. Takes about 30 seconds.</p>
+</div>
+
+<!-- SECTION 6 -->
+<div class="section" id="s6">
+  <div class="section-num">Section 6</div>
+  <h2 class="title">Phase 5 — Buy a domain on Namecheap</h2>
+  <div class="subtitle">~$7–$12/year for a .com domain</div>
+
+  <div class="step"><span class="step-num">1.</span> Go to <strong>namecheap.com</strong> → create an account</div>
+  <div class="step"><span class="step-num">2.</span> Use the search bar to check if your desired domain is available (e.g. <code>yourcompany.com</code>)</div>
+  <div class="step"><span class="step-num">3.</span> Add only the domain to cart — <strong>skip all upsells</strong>:</div>
+
+  <table>
+    <tr><th>Upsell</th><th>Action</th><th>Reason</th></tr>
+    <tr><td>Web Hosting</td><td><span class="badge gray">Skip</span></td><td>Netlify hosts for free</td></tr>
+    <tr><td>WordPress Hosting</td><td><span class="badge gray">Skip</span></td><td>You have a React site</td></tr>
+    <tr><td>SSL Certificate</td><td><span class="badge gray">Skip</span></td><td>Netlify provides free SSL</td></tr>
+    <tr><td>Business Email</td><td><span class="badge gray">Skip for now</span></td><td>Use Gmail free initially</td></tr>
+    <tr><td>Premium DNS</td><td><span class="badge gray">Skip</span></td><td>Netlify DNS is free and better</td></tr>
+    <tr><td>Domain Privacy</td><td><span class="badge green">Free — keep it</span></td><td>Hides your personal info from WHOIS</td></tr>
+  </table>
+
+  <div class="step"><span class="step-num">4.</span> At checkout, look for a first-year discount code — Namecheap often shows one automatically (e.g. <code>NEWCOM679</code> for ~$6.79 first year)</div>
+  <div class="step"><span class="step-num">5.</span> Complete payment. Your domain is now registered.</div>
+
+  <div class="alert">
+    <strong>Domain name tips:</strong> Choose <code>.com</code> if available — it's the most trusted. <code>.africa</code> domains have strong regional identity. Avoid hyphens if possible. Keep it short and memorable.
+  </div>
+</div>
+
+<!-- SECTION 7 -->
+<div class="section" id="s7">
+  <div class="section-num">Section 7</div>
+  <h2 class="title">Phase 6 — Connect the domain to Netlify</h2>
+  <div class="subtitle">Telling Netlify about your domain</div>
+
+  <div class="step"><span class="step-num">1.</span> In Netlify, go to your site → <strong>Domain management</strong> (left sidebar)</div>
+  <div class="step"><span class="step-num">2.</span> Click <strong>"Add a domain"</strong></div>
+  <div class="step"><span class="step-num">3.</span> Type your domain (e.g. <code>opsxafrica.com</code>) → click <strong>Verify</strong></div>
+  <div class="step"><span class="step-num">4.</span> Netlify confirms it found the domain → click <strong>"Add domain"</strong></div>
+  <div class="step"><span class="step-num">5.</span> You'll see your domain listed as <strong>"Primary domain"</strong> with a yellow <strong>"Pending DNS verification"</strong> warning — this is expected</div>
+  <div class="step"><span class="step-num">6.</span> Click <strong>"Pending DNS verification"</strong> → click <strong>"Set up Netlify DNS for [yourdomain.com] →"</strong> at the bottom</div>
+  <div class="step"><span class="step-num">7.</span> Click <strong>Verify</strong> — Netlify will display 4 nameserver addresses. Copy all 4.</div>
+
+  <p>The nameservers will look like this:</p>
+  <div class="code-block">
+    dns1.p05.nsone.net<br>
+    dns2.p05.nsone.net<br>
+    dns3.p05.nsone.net<br>
+    dns4.p05.nsone.net
+  </div>
+
+  <div class="alert warn">
+    <strong>Keep this Netlify page open.</strong> You'll need these nameservers in the next step. The exact values (p01, p02, p03, p05 etc.) vary per account — use whatever Netlify shows you, not the example above.
+  </div>
+</div>
+
+<!-- SECTION 8 -->
+<div class="section" id="s8">
+  <div class="section-num">Section 8</div>
+  <h2 class="title">Phase 7 — Point Namecheap nameservers to Netlify</h2>
+  <div class="subtitle">Telling Namecheap to hand DNS control to Netlify</div>
+
+  <div class="step"><span class="step-num">1.</span> Go to <strong>namecheap.com</strong> → log in → click <strong>Domain List</strong> in the left sidebar</div>
+  <div class="step"><span class="step-num">2.</span> Find your domain → click <strong>Manage</strong></div>
+  <div class="step"><span class="step-num">3.</span> You are on the <strong>Domain</strong> tab — scroll down to the <strong>NAMESERVERS</strong> section</div>
+  <div class="step"><span class="step-num">4.</span> Click the dropdown showing <strong>"Namecheap BasicDNS"</strong> → change it to <strong>"Custom DNS"</strong></div>
+  <div class="step"><span class="step-num">5.</span> Four input fields appear — enter the 4 nameservers from Netlify exactly as shown</div>
+  <div class="step"><span class="step-num">6.</span> Click the <strong>green checkmark (✓)</strong> to save</div>
+  <div class="step"><span class="step-num">7.</span> A confirmation dialog may appear — confirm the change</div>
+
+  <div class="alert">
+    <strong>What this does:</strong> You are transferring DNS control from Namecheap to Netlify. Netlify will now manage all DNS records for your domain — including automatically creating the records to point to your site and issuing SSL certificates.
+  </div>
+
+  <div class="alert warn">
+    <strong>Propagation time:</strong> After saving, DNS changes take 5 minutes to 24 hours to propagate globally. During this time, some visitors may still see the old state. This is normal. Average wait time is 15–30 minutes.
+  </div>
+</div>
+
+<!-- SECTION 9 -->
+<div class="section" id="s9">
+  <div class="section-num">Section 9</div>
+  <h2 class="title">Phase 8 — Provision the SSL certificate (HTTPS)</h2>
+  <div class="subtitle">Getting the padlock and removing the "Not secure" warning</div>
+
+  <p>After setting the nameservers, Netlify needs to verify DNS is pointing correctly before it can issue the SSL certificate.</p>
+
+  <h3>What you may see immediately after saving nameservers</h3>
+  <p>If you visit your domain in a browser too early, you may see a <strong>"Your connection isn't private"</strong> / <code>NET::ERR_CERT_COMMON_NAME_INVALID</code> error. This is normal — it means DNS propagated but SSL is not yet issued. Do not be alarmed.</p>
+
+  <h3>How to trigger SSL provisioning</h3>
+  <div class="step"><span class="step-num">1.</span> Wait 15–30 minutes after saving nameservers in Namecheap</div>
+  <div class="step"><span class="step-num">2.</span> Go to Netlify → your site → <strong>Domain management</strong> → scroll down to the <strong>HTTPS</strong> section</div>
+  <div class="step"><span class="step-num">3.</span> Click <strong>"Verify DNS configuration"</strong></div>
+  <div class="step"><span class="step-num">4.</span> If it shows <strong>"DNS verification was successful ✓"</strong> — Netlify is now provisioning your certificate automatically</div>
+  <div class="step"><span class="step-num">5.</span> Wait 5–10 minutes → visit <code>https://yourdomain.com</code> → you should see the padlock (🔒)</div>
+
+  <div class="alert">
+    <strong>Success state:</strong> When SSL is active, Netlify's HTTPS section will show <strong>"Your site has HTTPS enabled"</strong> with a green indicator. Your domain is now fully live and secure.
+  </div>
+
+  <div class="alert warn">
+    <strong>If "Verify DNS configuration" keeps failing:</strong> Wait longer — up to 24 hours in rare cases. Do not click "Provide your own certificate" — that is for advanced users with their own SSL certificates. Netlify's automatic free certificate (Let's Encrypt) is the correct option.
+  </div>
+</div>
+
+<!-- SECTION 10 -->
+<div class="section" id="s10">
+  <div class="section-num">Section 10</div>
+  <h2 class="title">Phase 9 — Add a subdomain for a second app</h2>
+  <div class="subtitle">e.g. app.opsxafrica.com → Vercel (ITS V.Pro app)</div>
+
+  <p>If you have a second application (like ITS V.Pro on Vercel) that you want to run under the same domain as <code>app.yourdomain.com</code>:</p>
+
+  <h3>Step 1: Add subdomain in Vercel</h3>
+  <div class="step"><span class="step-num">1.</span> Go to <strong>vercel.com</strong> → open your project</div>
+  <div class="step"><span class="step-num">2.</span> Go to <strong>Settings → Domains</strong></div>
+  <div class="step"><span class="step-num">3.</span> Type <code>app.yourdomain.com</code> → click <strong>Add</strong></div>
+  <div class="step"><span class="step-num">4.</span> Vercel will show you a <strong>CNAME value</strong> to add — it looks like <code>cname.vercel-dns.com</code></div>
+
+  <h3>Step 2: Add CNAME record in Netlify DNS</h3>
+  <p>Since Netlify is now managing your DNS (you pointed nameservers to Netlify in Phase 7), you add the Vercel CNAME record through Netlify's DNS panel:</p>
+  <div class="step"><span class="step-num">1.</span> Go to Netlify → <strong>Domains</strong> (top menu, not inside a specific site)</div>
+  <div class="step"><span class="step-num">2.</span> Click on <code>yourdomain.com</code></div>
+  <div class="step"><span class="step-num">3.</span> Click <strong>"Add new record"</strong></div>
+  <div class="step"><span class="step-num">4.</span> Type: <strong>CNAME</strong> &nbsp;|&nbsp; Name: <strong>app</strong> &nbsp;|&nbsp; Value: <strong>cname.vercel-dns.com</strong> (or whatever Vercel showed you)</div>
+  <div class="step"><span class="step-num">5.</span> Save → wait 5–15 minutes</div>
+  <div class="step"><span class="step-num">6.</span> Back in Vercel, click <strong>"Verify"</strong> on the domain — it should confirm and provision SSL automatically</div>
+
+  <h3>Result</h3>
+  <table>
+    <tr><th>URL</th><th>Points to</th><th>Platform</th></tr>
+    <tr><td>https://opsxafrica.com</td><td>Marketing website</td><td>Netlify</td></tr>
+    <tr><td>https://app.opsxafrica.com</td><td>ITS V.Pro app</td><td>Vercel</td></tr>
+  </table>
+</div>
+
+<!-- SECTION 11 -->
+<div class="section" id="s11">
+  <div class="section-num">Section 11</div>
+  <h2 class="title">How to redeploy after making changes</h2>
+  <div class="subtitle">Your update workflow every time you change content or code</div>
+
+  <h3>Every time you update the website</h3>
+  <div class="code-block">
+    <span class="comment"># 1. Make your changes in VS Code</span><br><br>
+    <span class="comment"># 2. Check for TypeScript errors</span><br>
+    npx tsc --noEmit<br><br>
+    <span class="comment"># 3. Build for production</span><br>
+    npm run build<br><br>
+    <span class="comment"># 4. Go to Netlify → Deploys tab → drag the dist/ folder to the drop zone</span>
+  </div>
+
+  <h3>Files commonly updated</h3>
+  <table>
+    <tr><th>What to change</th><th>File</th></tr>
+    <tr><td>Company logo</td><td><code>public/logo.svg</code> + update reference in <code>Navbar.tsx</code> and <code>Footer.tsx</code></td></tr>
+    <tr><td>Testimonials</td><td><code>src/data/testimonials.ts</code></td></tr>
+    <tr><td>Blog/articles</td><td><code>src/data/articles.ts</code></td></tr>
+    <tr><td>Services content</td><td><code>src/data/services.ts</code></td></tr>
+    <tr><td>Contact email / WhatsApp</td><td>Search for the email/phone across all files in <code>src/</code></td></tr>
+    <tr><td>Page content</td><td><code>src/pages/Home.tsx</code>, <code>About.tsx</code>, etc.</td></tr>
+  </table>
+</div>
+
+<!-- SECTION 12 -->
+<div class="section" id="s12">
+  <div class="section-num">Section 12</div>
+  <h2 class="title">Troubleshooting common issues</h2>
+  <div class="subtitle">Quick fixes for the most common problems</div>
+
+  <table>
+    <tr><th>Problem</th><th>Cause</th><th>Fix</th></tr>
+    <tr>
+      <td><code>npm run dev</code> steals another project's port</td>
+      <td>No fixed port set</td>
+      <td>Add <code>server: { port: 5200, strictPort: true }</code> to <code>vite.config.ts</code></td>
+    </tr>
+    <tr>
+      <td>TypeScript error: <code>',' expected</code></td>
+      <td>Apostrophe inside single-quoted string (e.g. <code>'it's'</code>)</td>
+      <td>Change to double quotes: <code>"it's"</code></td>
+    </tr>
+    <tr>
+      <td>Contact form not delivering emails</td>
+      <td><code>VITE_FORMSPREE_ID</code> not set in Netlify</td>
+      <td>Add env var in Netlify → rebuild → redeploy</td>
+    </tr>
+    <tr>
+      <td>"Your connection isn't private" on custom domain</td>
+      <td>DNS propagated but SSL not yet issued</td>
+      <td>Wait 10–30 min → go to Netlify HTTPS section → click "Verify DNS configuration"</td>
+    </tr>
+    <tr>
+      <td>Domain still shows Namecheap parking page</td>
+      <td>DNS not yet propagated</td>
+      <td>Wait up to 24 hours. Check progress at <code>dnschecker.org</code></td>
+    </tr>
+    <tr>
+      <td>Page shows fine on home route but 404 on other routes</td>
+      <td>React Router needs SPA redirect rule</td>
+      <td>Create <code>public/_redirects</code> file with content: <code>/* /index.html 200</code></td>
+    </tr>
+    <tr>
+      <td><code>import.meta.env</code> TypeScript error</td>
+      <td>Missing Vite client types</td>
+      <td>Add <code>"types": ["vite/client"]</code> to <code>tsconfig.json</code> compilerOptions</td>
+    </tr>
+  </table>
+
+  <div class="alert">
+    <strong>Netlify SPA redirect fix:</strong> Create a file at <code>public/_redirects</code> (no extension) with exactly this content: <code>/* /index.html 200</code>. This tells Netlify to serve your React app for all routes. Without this, refreshing a page like <code>/about</code> will return a 404.
+  </div>
+</div>
+
+<!-- SECTION 13 -->
+<div class="section" id="s13">
+  <div class="section-num">Section 13</div>
+  <h2 class="title">Cost Summary</h2>
+  <div class="subtitle">What this setup costs per year</div>
+
+  <table>
+    <tr><th>Item</th><th>Provider</th><th>Cost</th><th>Notes</th></tr>
+    <tr><td>Website hosting</td><td>Netlify</td><td><strong>$0/year</strong></td><td>Free tier covers all needs for a marketing site</td></tr>
+    <tr><td>App hosting (ITS V.Pro)</td><td>Vercel</td><td><strong>$0/year</strong></td><td>Free tier covers hobby/startup use</td></tr>
+    <tr><td>Contact form</td><td>Formspree</td><td><strong>$0/year</strong></td><td>Free tier: 50 submissions/month</td></tr>
+    <tr><td>SSL certificate</td><td>Let's Encrypt via Netlify</td><td><strong>$0/year</strong></td><td>Automatic, renews itself</td></tr>
+    <tr><td>Domain name (.com)</td><td>Namecheap</td><td><strong>~$7–$12/year</strong></td><td>First year often discounted. Renews at full price.</td></tr>
+    <tr><td>Domain privacy</td><td>Namecheap</td><td><strong>$0/year</strong></td><td>Included free with most domains</td></tr>
+  </table>
+
+  <div style="background: #0e1117; color: white; padding: 20px 24px; border-radius: 10px; margin-top: 16px;">
+    <div style="font-size: 13px; color: #94a3b8; margin-bottom: 4px;">Total annual cost</div>
+    <div style="font-size: 28px; font-weight: 800; color: #14B8A6;">~$7–$12 / year</div>
+    <div style="font-size: 13px; color: #64748b; margin-top: 4px;">Everything else is completely free</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  Prepared for <span>Ops X Consulting</span> &nbsp;|&nbsp; <span>opsxafrica.com</span> &nbsp;|&nbsp; March 2026<br>
+  <span style="color:#475569; font-size:11px; margin-top:6px; display:block;">To save as PDF: Open this file in your browser → Press Ctrl+P → Change destination to "Save as PDF" → Save</span>
+</div>
+
+</body>
+</html>

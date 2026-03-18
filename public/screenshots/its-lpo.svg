@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750">
+  <style>text { font-family: system-ui, -apple-system, Arial, sans-serif; }</style>
+
+  <!-- Background -->
+  <rect width="1200" height="750" fill="#F8FAFC"/>
+
+  <!-- ── TOP NAVBAR ── -->
+  <rect width="1200" height="52" fill="#0E1117"/>
+  <rect x="16" y="12" width="28" height="28" rx="6" fill="#14B8A6"/>
+  <text x="30" y="30" text-anchor="middle" fill="white" font-size="10" font-weight="800">ITS</text>
+  <text x="52" y="27" fill="white" font-size="13" font-weight="700">ITS V.Pro</text>
+  <text x="52" y="42" fill="#64748B" font-size="9">Inventory Tracking System</text>
+  <!-- Other nav links -->
+  <text x="210" y="31" fill="#9AA4B2" font-size="12">Dashboard</text>
+  <text x="306" y="31" fill="#9AA4B2" font-size="12">GRNs</text>
+  <!-- LPOs active -->
+  <rect x="355" y="0" width="54" height="52" fill="#14B8A6" fill-opacity="0.1"/>
+  <rect x="358" y="49" width="48" height="3" rx="1.5" fill="#14B8A6"/>
+  <text x="382" y="31" text-anchor="middle" fill="#14B8A6" font-size="12" font-weight="600">LPOs</text>
+  <text x="420" y="31" fill="#9AA4B2" font-size="12">Stock</text>
+  <text x="474" y="31" fill="#9AA4B2" font-size="12">Reports</text>
+  <!-- User avatar -->
+  <circle cx="1166" cy="26" r="14" fill="#1A2537"/>
+  <text x="1166" y="31" text-anchor="middle" fill="#14B8A6" font-size="11" font-weight="700">JK</text>
+
+  <!-- ── SIDEBAR ── -->
+  <rect x="0" y="52" width="200" height="698" fill="#0D1320"/>
+  <rect x="0" y="52" width="200" height="58" fill="#121826"/>
+  <circle cx="28" cy="81" r="13" fill="#1E2D3D"/>
+  <text x="28" y="85.5" text-anchor="middle" fill="#14B8A6" font-size="11" font-weight="700">JK</text>
+  <text x="50" y="78" fill="#E6EAF0" font-size="12" font-weight="600">James K.</text>
+  <text x="50" y="94" fill="#64748B" font-size="10">Stock Manager</text>
+  <text x="16" y="132" fill="#374151" font-size="9" font-weight="600" letter-spacing="1.5">MAIN MENU</text>
+  <text x="32" y="160" fill="#64748B" font-size="12">Dashboard</text>
+  <text x="32" y="192" fill="#64748B" font-size="12">GRN Management</text>
+  <!-- LPO Management active -->
+  <rect x="8" y="202" width="184" height="32" rx="7" fill="#14B8A6" fill-opacity="0.15"/>
+  <rect x="8" y="202" width="3" height="32" rx="1" fill="#14B8A6"/>
+  <text x="32" y="222" fill="#14B8A6" font-size="12" font-weight="600">LPO Management</text>
+  <text x="32" y="254" fill="#64748B" font-size="12">Stock Movement</text>
+  <text x="32" y="284" fill="#64748B" font-size="12">Item Master</text>
+  <line x1="16" y1="302" x2="184" y2="302" stroke="#1E2D3D"/>
+  <text x="16" y="318" fill="#374151" font-size="9" font-weight="600" letter-spacing="1.5">REPORTS</text>
+  <text x="32" y="338" fill="#64748B" font-size="12">Stock Reports</text>
+  <text x="32" y="366" fill="#64748B" font-size="12">Variance Reports</text>
+  <text x="32" y="394" fill="#64748B" font-size="12">Procurement Summary</text>
+  <rect x="8" y="712" width="184" height="28" rx="7" fill="#1E2D3D"/>
+  <text x="100" y="730" text-anchor="middle" fill="#9AA4B2" font-size="10">Lakeside Lounge &amp; Grill ▾</text>
+
+  <!-- ── MAIN CONTENT ── -->
+  <!-- Page header -->
+  <rect x="200" y="52" width="1000" height="60" fill="white"/>
+  <line x1="200" y1="112" x2="1200" y2="112" stroke="#E2E8F0"/>
+  <text x="224" y="80" fill="#0F172A" font-size="20" font-weight="700">Local Purchase Orders</text>
+  <text x="224" y="100" fill="#94A3B8" font-size="11">Manage and approve all purchase orders for your business.</text>
+  <!-- New LPO button -->
+  <rect x="1058" y="68" width="108" height="32" rx="8" fill="#14B8A6"/>
+  <text x="1112" y="89" text-anchor="middle" fill="white" font-size="12" font-weight="600">+ New LPO</text>
+
+  <!-- ── STATUS FILTER TABS ── -->
+  <rect x="200" y="112" width="1000" height="48" fill="white"/>
+  <line x1="200" y1="160" x2="1200" y2="160" stroke="#E2E8F0"/>
+  <!-- All (active) -->
+  <rect x="224" y="122" width="68" height="28" rx="7" fill="#F0FDFA" stroke="#14B8A6" stroke-width="1"/>
+  <text x="258" y="140" text-anchor="middle" fill="#14B8A6" font-size="12" font-weight="600">All</text>
+  <rect x="298" y="128" width="22" height="14" rx="7" fill="#14B8A6"/>
+  <text x="309" y="139" text-anchor="middle" fill="white" font-size="9" font-weight="700">23</text>
+  <!-- Other tabs -->
+  <rect x="340" y="122" width="128" height="28" rx="7" fill="transparent"/>
+  <text x="404" y="140" text-anchor="middle" fill="#64748B" font-size="12">Pending Approval</text>
+  <rect x="478" y="128" width="16" height="14" rx="7" fill="#FECACA"/>
+  <text x="486" y="139" text-anchor="middle" fill="#B91C1C" font-size="9" font-weight="700">4</text>
+  <rect x="510" y="122" width="80" height="28" rx="7" fill="transparent"/>
+  <text x="550" y="140" text-anchor="middle" fill="#64748B" font-size="12">Approved</text>
+  <rect x="596" y="128" width="16" height="14" rx="7" fill="#F0FDF4"/>
+  <text x="604" y="139" text-anchor="middle" fill="#16A34A" font-size="9" font-weight="700">3</text>
+  <rect x="626" y="122" width="78" height="28" rx="7" fill="transparent"/>
+  <text x="665" y="140" text-anchor="middle" fill="#64748B" font-size="12">Received</text>
+  <rect x="710" y="128" width="20" height="14" rx="7" fill="#F0FDF4"/>
+  <text x="720" y="139" text-anchor="middle" fill="#16A34A" font-size="9" font-weight="700">16</text>
+
+  <!-- ── LPO TABLE ── -->
+  <!-- Table header -->
+  <rect x="220" y="168" width="960" height="28" fill="#F1F5F9"/>
+  <line x1="220" y1="196" x2="1180" y2="196" stroke="#E2E8F0"/>
+  <text x="236" y="186" fill="#64748B" font-size="10" font-weight="700">LPO #</text>
+  <text x="370" y="186" fill="#64748B" font-size="10" font-weight="700">REQUESTED BY</text>
+  <text x="524" y="186" fill="#64748B" font-size="10" font-weight="700">SUPPLIER</text>
+  <text x="726" y="186" fill="#64748B" font-size="10" font-weight="700">DEPT</text>
+  <text x="826" y="186" fill="#64748B" font-size="10" font-weight="700">AMOUNT (UGX)</text>
+  <text x="968" y="186" fill="#64748B" font-size="10" font-weight="700">DATE</text>
+  <text x="1060" y="186" fill="#64748B" font-size="10" font-weight="700">STATUS</text>
+  <!-- Row 1 – Pending Approval -->
+  <rect x="220" y="196" width="960" height="40" fill="white"/>
+  <line x1="220" y1="236" x2="1180" y2="236" stroke="#E2E8F0"/>
+  <text x="236" y="220" fill="#0F172A" font-size="11">LPO-2026-0098</text>
+  <text x="370" y="220" fill="#0F172A" font-size="11">Sarah Namugga</text>
+  <text x="524" y="220" fill="#0F172A" font-size="11">Crown Beverages Uganda</text>
+  <text x="726" y="220" fill="#0F172A" font-size="11">Bar</text>
+  <text x="826" y="220" fill="#0F172A" font-size="11">4,200,000</text>
+  <text x="968" y="220" fill="#64748B" font-size="11">05 Mar 2026</text>
+  <rect x="1050" y="208" width="112" height="20" rx="10" fill="#FFFBEB" stroke="#FDE68A"/>
+  <text x="1106" y="222" text-anchor="middle" fill="#B45309" font-size="10" font-weight="600">Pending Approval</text>
+  <!-- Row 2 – Approved -->
+  <rect x="220" y="236" width="960" height="40" fill="#F8FAFC"/>
+  <line x1="220" y1="276" x2="1180" y2="276" stroke="#E2E8F0"/>
+  <text x="236" y="260" fill="#0F172A" font-size="11">LPO-2026-0097</text>
+  <text x="370" y="260" fill="#0F172A" font-size="11">James Kakooza</text>
+  <text x="524" y="260" fill="#0F172A" font-size="11">Mukwano Industries Ltd</text>
+  <text x="726" y="260" fill="#0F172A" font-size="11">Kitchen</text>
+  <text x="826" y="260" fill="#0F172A" font-size="11">2,860,000</text>
+  <text x="968" y="260" fill="#64748B" font-size="11">04 Mar 2026</text>
+  <rect x="1058" y="248" width="86" height="20" rx="10" fill="#F0FDFA" stroke="#99F6E4"/>
+  <text x="1101" y="262" text-anchor="middle" fill="#0D9488" font-size="10" font-weight="600">Approved</text>
+  <!-- Row 3 – Received -->
+  <rect x="220" y="276" width="960" height="40" fill="white"/>
+  <line x1="220" y1="316" x2="1180" y2="316" stroke="#E2E8F0"/>
+  <text x="236" y="300" fill="#0F172A" font-size="11">LPO-2026-0096</text>
+  <text x="370" y="300" fill="#0F172A" font-size="11">Mary Auma</text>
+  <text x="524" y="300" fill="#0F172A" font-size="11">City Oils Ltd</text>
+  <text x="726" y="300" fill="#0F172A" font-size="11">Kitchen</text>
+  <text x="826" y="300" fill="#0F172A" font-size="11">680,000</text>
+  <text x="968" y="300" fill="#64748B" font-size="11">03 Mar 2026</text>
+  <rect x="1060" y="288" width="80" height="20" rx="10" fill="#F0FDF4" stroke="#BBF7D0"/>
+  <text x="1100" y="302" text-anchor="middle" fill="#16A34A" font-size="10" font-weight="600">Received</text>
+  <!-- Row 4 – Received -->
+  <rect x="220" y="316" width="960" height="40" fill="#F8FAFC"/>
+  <line x1="220" y1="356" x2="1180" y2="356" stroke="#E2E8F0"/>
+  <text x="236" y="340" fill="#0F172A" font-size="11">LPO-2026-0095</text>
+  <text x="370" y="340" fill="#0F172A" font-size="11">David Ssemwanga</text>
+  <text x="524" y="340" fill="#0F172A" font-size="11">Nile Breweries Ltd</text>
+  <text x="726" y="340" fill="#0F172A" font-size="11">Bar</text>
+  <text x="826" y="340" fill="#0F172A" font-size="11">8,400,000</text>
+  <text x="968" y="340" fill="#64748B" font-size="11">02 Mar 2026</text>
+  <rect x="1060" y="328" width="80" height="20" rx="10" fill="#F0FDF4" stroke="#BBF7D0"/>
+  <text x="1100" y="342" text-anchor="middle" fill="#16A34A" font-size="10" font-weight="600">Received</text>
+  <!-- Row 5 – Approved -->
+  <rect x="220" y="356" width="960" height="40" fill="white"/>
+  <line x1="220" y1="396" x2="1180" y2="396" stroke="#E2E8F0"/>
+  <text x="236" y="380" fill="#0F172A" font-size="11">LPO-2026-0094</text>
+  <text x="370" y="380" fill="#0F172A" font-size="11">Sarah Namugga</text>
+  <text x="524" y="380" fill="#0F172A" font-size="11">Organic Produce Co.</text>
+  <text x="726" y="380" fill="#0F172A" font-size="11">Restaurant</text>
+  <text x="826" y="380" fill="#0F172A" font-size="11">1,200,000</text>
+  <text x="968" y="380" fill="#64748B" font-size="11">01 Mar 2026</text>
+  <rect x="1058" y="368" width="86" height="20" rx="10" fill="#F0FDFA" stroke="#99F6E4"/>
+  <text x="1101" y="382" text-anchor="middle" fill="#0D9488" font-size="10" font-weight="600">Approved</text>
+  <!-- Row 6 – Pending Approval -->
+  <rect x="220" y="396" width="960" height="40" fill="#F8FAFC"/>
+  <line x1="220" y1="436" x2="1180" y2="436" stroke="#E2E8F0"/>
+  <text x="236" y="420" fill="#0F172A" font-size="11">LPO-2026-0093</text>
+  <text x="370" y="420" fill="#0F172A" font-size="11">James Kakooza</text>
+  <text x="524" y="420" fill="#0F172A" font-size="11">EABL Uganda</text>
+  <text x="726" y="420" fill="#0F172A" font-size="11">Bar</text>
+  <text x="826" y="420" fill="#0F172A" font-size="11">12,600,000</text>
+  <text x="968" y="420" fill="#64748B" font-size="11">28 Feb 2026</text>
+  <rect x="1050" y="408" width="112" height="20" rx="10" fill="#FFFBEB" stroke="#FDE68A"/>
+  <text x="1106" y="422" text-anchor="middle" fill="#B45309" font-size="10" font-weight="600">Pending Approval</text>
+  <!-- Row 7 – Received -->
+  <rect x="220" y="436" width="960" height="40" fill="white"/>
+  <line x1="220" y1="476" x2="1180" y2="476" stroke="#E2E8F0"/>
+  <text x="236" y="460" fill="#0F172A" font-size="11">LPO-2026-0092</text>
+  <text x="370" y="460" fill="#0F172A" font-size="11">Mary Auma</text>
+  <text x="524" y="460" fill="#0F172A" font-size="11">Kampala Cold Chain Ltd</text>
+  <text x="726" y="460" fill="#0F172A" font-size="11">Kitchen</text>
+  <text x="826" y="460" fill="#0F172A" font-size="11">940,000</text>
+  <text x="968" y="460" fill="#64748B" font-size="11">27 Feb 2026</text>
+  <rect x="1060" y="448" width="80" height="20" rx="10" fill="#F0FDF4" stroke="#BBF7D0"/>
+  <text x="1100" y="462" text-anchor="middle" fill="#16A34A" font-size="10" font-weight="600">Received</text>
+  <!-- Table footer / pagination -->
+  <rect x="220" y="476" width="960" height="34" fill="#F8FAFC"/>
+  <line x1="220" y1="476" x2="1180" y2="476" stroke="#E2E8F0"/>
+  <text x="236" y="497" fill="#94A3B8" font-size="10">Showing 7 of 23 entries</text>
+  <rect x="1074" y="486" width="22" height="16" rx="5" fill="#E2E8F0"/>
+  <text x="1085" y="498" text-anchor="middle" fill="#64748B" font-size="10" font-weight="600">‹</text>
+  <rect x="1102" y="486" width="22" height="16" rx="5" fill="#14B8A6"/>
+  <text x="1113" y="498" text-anchor="middle" fill="white" font-size="10" font-weight="600">1</text>
+  <rect x="1130" y="486" width="22" height="16" rx="5" fill="#E2E8F0"/>
+  <text x="1141" y="498" text-anchor="middle" fill="#64748B" font-size="10" font-weight="600">2</text>
+  <rect x="1158" y="486" width="22" height="16" rx="5" fill="#E2E8F0"/>
+  <text x="1169" y="498" text-anchor="middle" fill="#64748B" font-size="10" font-weight="600">›</text>
+</svg>
